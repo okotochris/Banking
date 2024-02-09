@@ -127,6 +127,7 @@ input, select, button{
         font-size:18px;
  	font-size:18px;	
 	margin:5px;
+    background:white;
 }
 .transfer{
 	background:blue;
@@ -212,10 +213,13 @@ button:hover{
 }
 @media only screen and (max-width:600px){
     .details{
-        width:80%;
+        width:99%;
     }
     .balance{
         width:85%;
     }
+    .transfer{
+        width:95%;
+}
    
 }
