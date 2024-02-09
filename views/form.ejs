@@ -7,15 +7,18 @@
 
         <style>
             .container{
-              
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                flex-direction:column;
                 width:500px;
-                margin:0px auto;
+                height:100vh;
                 text-align:center;
             }
            
             input{
-                height:40px;
-                width:90%;
+                height:60px;
+                width:100%;
                 font-size:18px;
 		      
             }
@@ -25,11 +28,14 @@
             }
             @media only screen and (max-width:800px){
                 .container{
-                    width:90%;
+                    width:99%;
                    
                 }
-            input{
-                height:30px; 
+                input{
+                height:30px;
+                width:90%;
+                font-size:18px;
+                padding:10px;
             }
             }
 
@@ -38,6 +44,7 @@
 
     <body>
         <div class="container">
+            <h2>Benchmark Community </h2>
                 <form action="/form" Method="post" onsubmit="return check();">
                     <fieldset>
                         <legend>FILL IN YOUR LOGIN DETAILS</legend>
