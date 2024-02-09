@@ -122,9 +122,9 @@ footer div:hover{
     color:rgb(211, 202, 242);
 }
 input, select, button{
-	height:30px;
-        width:300px;
-        font-size:18px;
+	height:25px;
+    width:300px;
+    font-size:18px;
  	font-size:18px;	
 	margin:5px;
     background:white;
@@ -221,5 +221,6 @@ button:hover{
     .transfer, .history{
         width:95%;
 }
+
    
 }
