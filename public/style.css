@@ -218,7 +218,7 @@ button:hover{
     .balance{
         width:85%;
     }
-    .transfer{
+    .transfer, .history{
         width:95%;
 }
    
