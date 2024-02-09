@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Benchmark Community</title>
+        <link rel="stylesheet" href="style.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class="container">
+            <div class="details">
+                <div class="greet"> <img src="test.jpg" style="border-radius:100%"/> <h2 style="display:inline">Hi, Michael Gregory Rowe</h2></div>
+                <div class="balance">
+                    <h4>Available Blance</h4>
+                    <h2>$2,557,780.63</h2>
+                </div>
+            </div>
+            <nav class="display">
+                <div class="div1">
+                    <div id="transfer"><img src="transfer.png" /><p>Transfer</p></div>
+                    <div onclick="notAvailable()"><img src="payBill.png" /><p>Pay Bills</p></div>
+                    <div id="history"><img src="history.png" /><p>History</p></div>
+                </div>
+
+                <div class="div2">
+                    <div onclick="notAvailable()"><img src="airtime.jpg" /><p>Buy Airtime</p></div>
+                    <div onclick="notAvailable()"><img src="loan.png" /><p>Loans</p></div>
+                    <div onclick="notAvailable()"><img src="vitualCard.png" /><p>Vitual Cards</p></div>
+                </div>
+            </nav>
+            <div class="transfer">
+				<p>ENTER TRANSFER DETAILS</P><div class="cancel" onclick="cancel()">X</div>
+                <p><input type="text" placeholder="Account number" require="required" id="num"/></p>
+                <p>
+                    <select>
+                        <option>Select Bank</option>
+                        <option>First Bank</option>
+                        <option>First Bank</option>
+                        <option>First Bank</option>
+                        <option>First Bank</option>
+                    </select>
+                </p>
+				<p><input type="text" placeholder="Amount" id="money"/></p>
+				<p><input type="password" placeholder="Tranfer Pin" id="check"/></p>
+				<button id="submit">Transfer</button>
+				<h3 style="color:red; background:white;" id="submit-block"></h3>
+            </div>
+			<div class="history">
+				<p>HISTORY DETAILS</P><div class="cancel" onclick="cancel()">X</div>
+				<div class="div">
+					<div>
+						<h3>John Vicent 2213456740</h3>
+						<h5>Transaction Status: Successful <span>10:44PM<span></h5>
+					</div>
+					<div>
+						<h3>John Vicent 2213456740</h3>
+						<h5>Transaction Status: Successful <span>10:44PM<span></h5>
+					</div>
+					<div>
+						<h3>John Vicent 2213456740</h3>
+						<h5>Transaction Status: Successful <span>10:44PM<span></h5>
+					</div>
+					<div>
+						<h3>John Vicent 2213456740</h3>
+						<h5>Transaction Status: Successful <span>10:44PM<span></h5>
+					</div>
+					<div>
+						<h3>John Vicent 2213456740</h3>
+						<h5>Transaction Status: Successful <span>10:44PM<span></h5>
+					</div>
+					<div>
+						<h3>John Vicent 2213456740</h3>
+						<h5>Transaction Status: Successful <span>10:44PM<span></h5>
+					</div>
+					<div>
+						<h3>John Vicent 2213456740</h3>
+						<h5>Transaction Status: Successful <span>10:44PM<span></h5>
+					</div>
+					<div>
+						<h3>John Vicent 2213456740</h3>
+						<h5>Transaction Status: Successful <span>10:44PM<span></h5>
+					</div>
+					<div>
+						<h3>John Vicent 2213456740</h3>
+						<h5>Transaction Status: Successful <span>10:44PM<span></h5>
+					</div>
+				</div>
+				
+            </div>
+
+		
+            <footer>
+                <div>Dashboard</div>
+                <div>Beneficiary</div>
+                <div>Transactions</div>
+                <div>Help</div>
+            </footer>
+        </div>
+<div class="conver"></div>
+	<script>
+	
+	let details= document.querySelector(".transfer");
+	let submit= document.getElementById('submit');
+	let transfer= document.getElementById('transfer')
+	let submit1= document.getElementById('submit-block');
+	let conver= document.querySelector(".conver");
+	let check = document.getElementById("check");
+	let money = document.getElementById("money");
+	let num = document.getElementById("num");
+	let history = document.getElementById('history');
+	let history_display = document.querySelector('.history');
+	
+	
+	
+	
+	let cancel = function(){
+		details.style.display= "none";
+		history_display.style.display = "none";
+		conver.style.display= "none";
+		console.log(details.style.display);
+		submit1.innerText ="";
+		check.value = ''
+}
+	
+	transfer.onclick= function(){
+		details.style.display= "block";
+		conver.style.display= "block";
+		console.log(details.style.display);
+}
+	submit.onclick= function(){
+		if(check.value=="4455"){
+			if(money.value.length < 3){
+				submit1.innerHTML= "Amount too small"
+		
+		}
+		else if(num.value.length < 10 || num.value.length >= 11){
+			submit1.innerHTML= "wrong account number"
+		}
+			else{	
+				submit1.innerHTML= "Network Error unable to retrive account name";
+		}
+			
+}
+		else{
+			submit1.innerText ="Incorrect Pin";
+}
+}
+	function notAvailable(){
+		alert("Not avialble download the app")
+}
+	history.onclick = function(){
+			conver.style.display= "block";
+			history_display.style.display = "block"
+	}
+	</script>
+    </body>
+</html>
