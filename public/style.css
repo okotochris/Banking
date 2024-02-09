@@ -203,8 +203,8 @@ button:hover{
 }
 .conver{
 	position:absolute;
-	height:100%;
-	width:100%;
+	height:100vh;
+	width:98%;
 	background-color: rgba(0, 0, 0, 0.5);
 	top:0;
 	top:0;
@@ -213,7 +213,7 @@ button:hover{
 }
 @media only screen and (max-width:600px){
     .details{
-        width:99%;
+        width:95%;
     }
     .balance{
         width:85%;
