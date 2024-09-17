@@ -22,7 +22,7 @@ app.get('/', (req, res)=>{
 })
 
 //checking form
-app.post('/form', (req, res)=>{
+app.post('/banking', (req, res)=>{
     let name = req.body.username;
     let password = req.body.password;
     console.log(name, password)
@@ -32,5 +32,5 @@ app.post('/form', (req, res)=>{
     else res.json("invalid user")
 })
 app.use((req, res)=>{
-    res.redirect('carolina')
+    res.render('carolina')
 })
