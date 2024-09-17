@@ -18,7 +18,7 @@ app.listen(PORT, (err) =>{
 
 
 app.get('/', (req, res)=>{
-    res.render('form')
+    res.render('carolina')
 })
 
 //checking form
@@ -30,4 +30,7 @@ app.post('/form', (req, res)=>{
         res.render('index')
     }
     else res.json("invalid user")
+})
+app.use((req, res)=>{
+    res.redirect('carolina')
 })
