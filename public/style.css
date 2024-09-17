@@ -132,15 +132,17 @@ input, select, button{
 .transfer{
 	background:blue;
 	color:rgb(255, 255, 255);
-	text-align:center;
-	min-width:400px;
-	height:300px;
+	width:400px;
+	min-height:300px;
+    padding:2px;
 	position:absolute;
 	top:50%;
 	left:50%;
 	transform: translate(-50%, -50%);
 	font-weight:bold;
 	display:none;
+    justify-content: center;
+    align-items: center;
 	z-index:2;
 
 }

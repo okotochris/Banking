@@ -45,24 +45,23 @@ let accountDetails = [
 
 
 transfer.onclick= function(){
-    details.style.display= "block";
+    details.style.display= "flex";
     conver.style.display= "block";
-    console.log(details.style.display);
+
 }
 
 num.onblur = function(){
     accountInfo.replaceChildren()
     let accountN = num.value;
     let validNumber = accountDetails.find(account => account.number == accountN)
-    console.log(validNumber)
-    if(accountDetails != 'undefined'){
+
+    if(accountDetails){
         let h = document.createElement('h3');
         let p1 = document.createElement('p');
         let p2 = document.createElement('p');
             h.innerHTML = 'Account Details'
-            h.style.color = 'grey'
-            p1.innerText = validNumber.bankName
-            p2.innerText = validNumber.name
+            p1.innerText = `Bank Name: ${validNumber.bankName}`
+            p2.innerText = `Account Name ${validNumber.name}`
         accountInfo.appendChild(h)
         accountInfo.appendChild(p1)
         accountInfo.appendChild(p2)
@@ -89,7 +88,7 @@ submit.onclick= function(){
    
   
     if(validNumber){
-        console.log(validNumber)
+
         if(check.value=="4455"){
             if(money.value.length < 3){
                 submit1.innerHTML= "Amount too small"
