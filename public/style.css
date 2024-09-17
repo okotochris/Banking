@@ -131,9 +131,9 @@ input, select, button{
 }
 .transfer{
 	background:blue;
-	color:white;
+	color:rgb(255, 255, 255);
 	text-align:center;
-	width:400px;
+	min-width:400px;
 	height:300px;
 	position:absolute;
 	top:50%;
@@ -176,7 +176,7 @@ input, select, button{
 .history .div div{
 	margin: 10px 0px;
 }
-span{
+.div span{
 	color:black;
 	padding:40px;
 }

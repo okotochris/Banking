@@ -9,10 +9,10 @@
     <body>
         <div class="container">
             <div class="details">
-                <div class="greet"> <img src="test.jpeg" style="border-radius:100%"/> <h3 style="display:inline">Hi, Alexander Michael</h3></div>
+                <div class="greet"> <img src="test.jpeg" style="border-radius:100%"/> <h3 style="display:inline">Hi, Adeline William</h3></div>
                 <div class="balance">
                     <h4>Available Blance</h4>
-                    <h2>$2,557,780.63</h2>
+                    <h2>$<span>2,557,780.63</span></h2>
                 </div>
             </div>
             <nav class="display">
@@ -31,6 +31,9 @@
             <div class="transfer">
 				<p>ENTER TRANSFER DETAILS</P><div class="cancel" onclick="cancel()">X</div>
                 <p><input type="text" placeholder="Account number" require="required" id="num"/></p>
+				<div class="accountDetails" style="background:white; color:red;">
+					
+				</div>
 				<p><input type="text" placeholder="Amount" id="money"/></p>
 				<p><input type="password" placeholder="Tranfer Pin" id="check"/></p>
 				<button id="submit">Transfer</button>
@@ -98,63 +101,9 @@
             </footer>
         </div>
 <div class="conver"></div>
-	<script>
+	<script src="JavaScript/main.js">
 	
-	let details= document.querySelector(".transfer");
-	let submit= document.getElementById('submit');
-	let transfer= document.getElementById('transfer')
-	let submit1= document.getElementById('submit-block');
-	let conver= document.querySelector(".conver");
-	let check = document.getElementById("check");
-	let money = document.getElementById("money");
-	let num = document.getElementById("num");
-	let history = document.getElementById('history');
-	let history_display = document.querySelector('.history');
-	
-	
-	
-	
-	
-	let cancel = function(){
-		details.style.display= "none";
-		history_display.style.display = "none";
-		conver.style.display= "none";
-		submit1.innerText ="";
-		check.value = ''
-		num.value="";
-		money.value= "";
-}
-	
-	transfer.onclick= function(){
-		details.style.display= "block";
-		conver.style.display= "block";
-		console.log(details.style.display);
-}
-	submit.onclick= function(){
-		if(check.value=="4455"){
-			if(money.value.length < 3){
-				submit1.innerHTML= "Amount too small"
-		
-		}
-		else if(num.value.length != 10){
-			submit1.innerHTML= "wrong account number"
-		}
-			else{	
-				submit1.innerHTML= "Network Error unable to retrive account name";
-		}
-			
-}
-		else{
-			submit1.innerText ="Incorrect Pin";
-}
-}
-	function notAvailable(){
-		alert("Not avialble download the app")
-}
-	history.onclick = function(){
-			conver.style.display= "block";
-			history_display.style.display = "block"
-	}
+
 	</script>
     </body>
 </html>
