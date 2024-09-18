@@ -213,19 +213,6 @@ button:hover{
 	z-index:1;
 	display:none;
 }
-@media only screen and (max-width:600px){
-    .details{
-        width:95%;
-    }
-    .balance{
-        width:85%;
-    }
-    .transfer, .history{
-        width:95%;
-}
-
-   
-}
 .receipt{
    
     width: 500px;
@@ -240,4 +227,19 @@ button:hover{
 }
 .receipt p{
     padding: 10px;   
+}
+@media only screen and (max-width:600px){
+    .details{
+        width:95%;
+    }
+    .balance{
+        width:85%;
+    }
+    .transfer, .history{
+        width:95%;
+}
+.receipt{
+    width: 100%;
+}
+   
 }

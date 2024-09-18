@@ -126,6 +126,7 @@ function successful(validNumber){
     let h2 = document.createElement('h2')
     let h3 = document.createElement('h3')
     let button = document.createElement('button')
+    let dashBoard = document.createElement('button')
 
     p1.innerText = `Account Name: ${validNumber.bankName}`
     p2.innerText = `Beneficiary Name: ${validNumber.name}`
@@ -146,6 +147,20 @@ function successful(validNumber){
     div.setAttribute('class', 'receipt')
     document.querySelector('.container').style.display = 'none'
     document.body.appendChild(div);
+
+    dashBoard.innerText = 'DASHBOARD'
+    div.appendChild(dashBoard)
+
+
+    dashBoard.onclick = ()=>{
+        document.querySelector('.container').style.display = 'block'
+        cancel()
+    }
+
+
+    button.onclick = function(){
+        console.log('button click')
+    }
 }
 
 function notAvailable(){
@@ -160,7 +175,7 @@ history.onclick = function(){
 let cancel = function(){
     details.style.display= "none";
     history_display.style.display = "none";
-    
+    conver.style.display = 'none'
     submit1.innerText ="";
     check.value = ''
     num.value="";
