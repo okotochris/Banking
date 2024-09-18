@@ -94,10 +94,9 @@ submit.onclick= function(){
                 submit1.innerHTML= "Amount too small"
         
             }
-             else if(num.value.length != 10){
-                submit1.innerHTML= "Network Error unable to retrive account name"
-             }
+            
              else{
+                successful(validNumber)
                 
              }
             }
@@ -107,7 +106,7 @@ submit.onclick= function(){
     }
     else{
         if(check.value=="4455"){
-            submit1.innerHTML= "Network Error unable to retrive account name";
+            submit1.innerHTML= "unable to retrive account name";
         }
         else{
             submit1.innerHTML= "invalid PIN";
@@ -117,6 +116,37 @@ submit.onclick= function(){
    
 }
 
+function successful(validNumber){
+    conver.style.display= "none";
+    let div = document.createElement('div')
+    let p1 = document.createElement('p')
+    let p2 = document.createElement('p')
+    let p3 = document.createElement('p')
+    let p4 = document.createElement('p')
+    let h2 = document.createElement('h2')
+    let h3 = document.createElement('h3')
+    let button = document.createElement('button')
+
+    p1.innerText = `Account Name: ${validNumber.bankName}`
+    p2.innerText = `Beneficiary Name: ${validNumber.name}`
+    p3.innerText = `Beneficiary Account Number: ${validNumber.name}`
+    if(validNumber.Store){
+         p4.innerText = `Store: ${validNumber.Store}`
+    }
+    h2.innerText = 'FIRST CAROLINA BANK'
+    h3.innerText = 'Transaction successful'
+    button.innerText = 'Download and Share'
+    div.appendChild(h2)
+    div.appendChild(h3)
+    div.appendChild(p1)
+    div.appendChild(p2)
+    div.appendChild(p3)
+    div.appendChild(p4)
+    div.appendChild(button)
+    div.setAttribute('class', 'receipt')
+    document.querySelector('.container').style.display = 'none'
+    document.body.appendChild(div);
+}
 
 function notAvailable(){
     alert("Not avialble download the app")
@@ -130,7 +160,7 @@ history.onclick = function(){
 let cancel = function(){
     details.style.display= "none";
     history_display.style.display = "none";
-    conver.style.display= "none";
+    
     submit1.innerText ="";
     check.value = ''
     num.value="";

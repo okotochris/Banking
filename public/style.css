@@ -226,3 +226,18 @@ button:hover{
 
    
 }
+.receipt{
+   
+    width: 500px;
+    margin: 20px auto;
+    font-size: 18px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white;
+}
+.receipt h2{
+    color:blue;
+    padding: 5px;
+}
+.receipt p{
+    padding: 10px;   
+}
