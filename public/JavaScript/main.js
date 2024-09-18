@@ -154,6 +154,7 @@ function successful(validNumber){
 
     dashBoard.onclick = ()=>{
         document.querySelector('.container').style.display = 'block'
+        div.style.display = 'none'
         cancel()
     }
 
