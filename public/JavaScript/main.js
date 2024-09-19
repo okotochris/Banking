@@ -9,6 +9,7 @@ let num = document.getElementById("num");
 let history = document.getElementById('history');
 let history_display = document.querySelector('.history');
 let accountInfo = document.querySelector('.accountDetails')
+let value = document.getElementById('balance')
 
 
 
@@ -16,12 +17,17 @@ let accountInfo = document.querySelector('.accountDetails')
 let accountDetails = [
     {
         bankName: 'Bank of America',
-        number: '0531741030',
+        number: '053174103',
         name: 'Charlotte Moore'
     },
     {
+        bankName: 'Aozara Bank',
+        number: '0503728',
+        name: 'Hayamoto Kurihara'
+    },
+    {
         bankName: 'Bank of North Carolina',
-        number: '0531120390',
+        number: '053112039',
         name: 'Lopez Taylor'
     },
     {
@@ -40,6 +46,12 @@ let accountDetails = [
         number: '6671579',
         name : 'Tomoko Kawahara Smbc',
         Store: '002'
+    },
+    {
+    bankName: 'CITIZENS BANK NA',
+    number: '001304518',
+    name : 'Mr. Giovanna Harrison',
+    Store: '02916'
     },
 ]
 
@@ -94,10 +106,13 @@ submit.onclick= function(){
                 submit1.innerHTML= "Amount too small"
         
             }
-            
+            else if(checkBalance()){
+                 submit1.innerText = 'Insuficient Funds'
+            }
              else{
-                successful(validNumber)
                 
+                successful(validNumber)
+                updateHistory()
              }
             }
         else{
@@ -113,7 +128,7 @@ submit.onclick= function(){
         }
     }
             
-   
+  
 }
 
 function successful(validNumber){
@@ -123,26 +138,35 @@ function successful(validNumber){
     let p2 = document.createElement('p')
     let p3 = document.createElement('p')
     let p4 = document.createElement('p')
+    let p6 = document.createElement('p')
     let h2 = document.createElement('h2')
     let h3 = document.createElement('h3')
     let button = document.createElement('button')
     let dashBoard = document.createElement('button')
+    let img = document.createElement('img')
 
     p1.innerText = `Account Name: ${validNumber.bankName}`
     p2.innerText = `Beneficiary Name: ${validNumber.name}`
     p3.innerText = `Beneficiary Account Number: ${validNumber.name}`
+    p6.innerText = `Amount: $${money.value}`
     if(validNumber.Store){
          p4.innerText = `Store: ${validNumber.Store}`
     }
+    img.src = 'carolina.png'
+    img.style.height = '100px'
+    img.style.width = '300px'
     h2.innerText = 'FIRST CAROLINA BANK'
     h3.innerText = 'Transaction successful'
     button.innerText = 'Download and Share'
+
+    div.appendChild(img)
     div.appendChild(h2)
     div.appendChild(h3)
     div.appendChild(p1)
     div.appendChild(p2)
     div.appendChild(p3)
     div.appendChild(p4)
+    div.appendChild(p6)
     div.appendChild(button)
     div.setAttribute('class', 'receipt')
     document.querySelector('.container').style.display = 'none'
@@ -160,8 +184,9 @@ function successful(validNumber){
 
 
     button.onclick = function(){
-        console.log('button click')
+       download(div, dashBoard, button)
     }
+    debit()
 }
 
 function notAvailable(){
@@ -182,4 +207,100 @@ let cancel = function(){
     num.value="";
     money.value= "";
     accountInfo.replaceChildren()
+}
+
+function debit(){
+    let value = document.getElementById('balance')
+    let balance = value.innerText;
+    result = balance.replace(/,/g, '')
+    
+   let = newAmount = result - money.value
+   value.innerHTML = newAmount
+ 
+}
+function updateHistory(){
+    let today = new Date();
+    let dateOnly = today.toLocaleDateString();
+    let timeOnly = today.toLocaleTimeString(); 
+    let update = document.querySelector('.div')
+
+    let div = document.createElement('div')
+    let h3 = document.createElement('h3')
+    let h5 = document.createElement('h5')
+    let p = document.createElement('p')
+    let span = document.createElement('span')
+    let accountN = num.value;
+    let validNumber = accountDetails.find(account => account.number == accountN)
+
+    h3.innerText = `${validNumber.name}`
+    p.innerText = `Trnasfer: $${money.value}`
+    h5.innerText = 'Transaction Status: Successful'
+    span.innerText = ` ${timeOnly}`
+    h5.appendChild(span)
+    div.appendChild(h3)
+    div.appendChild(p)
+    div.appendChild(h5)
+
+    update.insertBefore(div, update.firstChild)
+    console.log(dateOnly, timeOnly)
+
+    
+}
+function checkBalance(){
+    let value = document.getElementById('balance')
+    let balance = value.innerText;
+   
+    result = balance.replace(/,/g, '')
+    if(Number(result) < money.value){
+        console.log('true')
+        return true
+        
+    }
+    else{
+        console.log('false')
+        return false
+    }
+}
+
+async function download(resultContainer, dashBoard, button) {
+   
+    dashBoard.style.display = 'none'
+    button.style.display = 'none'
+    // Create a temporary container to hold the result content
+    var tempContainer = document.createElement('div');
+    tempContainer.style.position = 'absolute';
+    tempContainer.style.top = '0';
+    tempContainer.style.left = '0';
+    tempContainer.style.backgroundColor = '#fff';
+    tempContainer.innerHTML = resultContainer.outerHTML;
+
+    // Append the temporary container to the body
+    document.body.appendChild(tempContainer);
+
+    try {
+        // Ensure the container is fully visible in the viewport
+        window.scrollTo(0, 0);
+
+        // Capture the content of the container as a blob using dom-to-image
+        var blob = await domtoimage.toBlob(tempContainer, { quality: 1 }); // Set highest quality (1)
+        var url = URL.createObjectURL(blob);
+
+        // Create a link element to trigger the download
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = 'receipt.jpg'; // Define the file name
+        document.body.appendChild(link);
+        link.click(); // Programmatically click the link to start download
+        document.body.removeChild(link); // Remove the link element after download
+
+        // Release the object URL after the download is triggered
+        URL.revokeObjectURL(url);
+    } catch (error) {
+        console.error('Error generating image:', error);
+    } finally {
+        // Remove the temporary container from the body
+        document.body.removeChild(tempContainer);
+    }
+    dashBoard.style.display = 'block'
+    button.style.display = 'block'
 }

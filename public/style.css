@@ -147,7 +147,7 @@ input, select, button{
 
 }
 .history{
-	background:blue;
+	background:rgb(68, 68, 235);
 	color:white;
 	width:400px;
 	height:500px;
@@ -157,6 +157,7 @@ input, select, button{
 	transform: translate(-50%, -50%);
 	font-weight:bold;
 	display:none;
+    padding: 10px;
 	z-index:2;
 	overflow:hidden;
 	box-shadow: 4px 4px 5px rgb(122, 110, 110), -4px -4px 5px rgb(122, 110, 110);
@@ -165,14 +166,9 @@ input, select, button{
 	text-align:center;
 }
 .history .div{
-	display: flex;
-	flex-direction: column;
-	align-items:center;
-	justify-content:center;
-	height:100%;
-	overflow-y:scroll;
-	padding:10px;
 	
+	overflow-y:scroll;
+
 }
 
 .history .div div{
@@ -196,9 +192,16 @@ button:hover{
 	border-radius:100%;
 	position:absolute;
 	right:3px;
-	top:3px;
+	top:10px;
 	align-content:center;
 	cursor:pointer;
+}
+.header{
+   height:50px; 
+   background:blue;
+   display:flex;
+   padding-left: 5px;
+   align-items: center;
 }
 .cancel:hover{
 	color:red;
@@ -217,7 +220,7 @@ button:hover{
    
     width: 500px;
     margin: 20px auto;
-    font-size: 18px;
+    font-size: 14px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: white;
 }
@@ -226,7 +229,7 @@ button:hover{
     padding: 5px;
 }
 .receipt p{
-    padding: 10px;   
+    padding: 5px;   
 }
 @media only screen and (max-width:600px){
     .details{

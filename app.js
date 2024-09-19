@@ -25,7 +25,7 @@ app.get('/', (req, res)=>{
 app.post('/banking', (req, res)=>{
     let name = req.body.username;
     let password = req.body.password;
-    console.log(name, password)
+
     if(password == '4455' && name=="6237193022"){
         res.render('index')
     }
