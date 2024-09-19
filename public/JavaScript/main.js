@@ -213,8 +213,8 @@ function debit(){
     let value = document.getElementById('balance')
     let balance = value.innerText;
     result = balance.replace(/,/g, '')
-    
-   let = newAmount = result - money.value
+    moneyValue = money.value.replace(/,/g, '')
+   let = newAmount = result - moneyValue
    value.innerHTML = newAmount
  
 }
@@ -232,7 +232,7 @@ function updateHistory(){
     let accountN = num.value;
     let validNumber = accountDetails.find(account => account.number == accountN)
 
-    h3.innerText = `${validNumber.name}`
+    h3.innerText = `${validNumber.name} ${validNumber.number}`
     p.innerText = `Trnasfer: $${money.value}`
     h5.innerText = 'Transaction Status: Successful'
     span.innerText = ` ${timeOnly}`
@@ -241,23 +241,19 @@ function updateHistory(){
     div.appendChild(p)
     div.appendChild(h5)
 
-    update.insertBefore(div, update.firstChild)
-    console.log(dateOnly, timeOnly)
-
-    
+    update.insertBefore(div, update.firstChild)    
 }
+
 function checkBalance(){
     let value = document.getElementById('balance')
     let balance = value.innerText;
    
     result = balance.replace(/,/g, '')
     if(Number(result) < money.value){
-        console.log('true')
         return true
         
     }
     else{
-        console.log('false')
         return false
     }
 }
