@@ -61,6 +61,12 @@ transfer.onclick= function(){
     conver.style.display= "block";
 
 }
+let email = document.querySelector('.email')
+let help = document.querySelector('.help')
+help.onclick = ()=>{
+    email.style.display= "block";
+    conver.style.display= "block";
+}
 
 num.onblur = function(){
     accountInfo.replaceChildren()
@@ -207,6 +213,7 @@ let cancel = function(){
     num.value="";
     money.value= "";
     accountInfo.replaceChildren()
+    email.style.display = "none"
 }
 
 function debit(){
