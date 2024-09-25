@@ -5,6 +5,8 @@
         <title>FIRST CAROLINA BANK</title>
         <link rel="stylesheet" href="style.css"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+
     </head>
     <body>
         <div class="container">
@@ -12,13 +14,13 @@
                 <div class="dashboard">
 					<div class="greet"> 
 						<img src="test.jpeg" style="border-radius:100%"/> 
-						<h3>Hi, Adeline William</h3>
+						<h3>Hi,  <%= data.userName %></h3>
 					</div>
 					<div class="help"></div>
 				</div>
                 <div class="balance">
                     <h4>Available Balance</h4>
-                    <h2>$<span id="balance">2,557,780.63</span></h2>
+                    <h2>$<span id="balance"><%= data.accBal %></span></h2>
                 </div>
             </div>
             <nav class="display">
@@ -124,5 +126,6 @@
 <div class="conver"></div>
 	<script src="JavaScript/main.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+	
     </body>
 </html>

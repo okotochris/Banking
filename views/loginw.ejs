@@ -57,7 +57,7 @@
             <img src="carolina.png" />
             
             <h3>your reliable bank</h3>
-                <form action="/banking" Method="post" onsubmit="return check();">
+                <form action="/banking" Method="post">
                     <fieldset>
                         <legend>FILL IN YOUR LOGIN DETAILS</legend>
                         <p> <input type="text" required placeholder="ACCOUNT NUMBER" id="userName" name="username"/></p>
@@ -65,35 +65,12 @@
                         <p><input type="submit" value="login" style="height:40px"/></p>
                     </fieldset>
                 </form>
-                <h3 style="color:red;" id="wrong">  </h3>
+                <h3 style="color:red;" id="wrong">Invalid User</h3>
 
              
             </div>
 
-            <script>
-              
-
-               function check(){
-
-                let userName = document.getElementById('userName')
-                let password = document.getElementById('password')
-                let wrong = document.getElementById('wrong')
-
-                if(userName.value == "6237193022" && password.value == "4455"){
-                    console.log('correct input')
-                    return true;
-                   
-                }
-                else{
-                    wrong.innerHTML= "Incorrect Username or Password"
-                    console.log('wrong input')
-                    return false;
-                }
-
-             
-               }
-               
-            </script>
+         
     </body>
     
 </html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LOGIN</title>
+
+        <style>
+            .div{
+                border-radius:20px; 
+                width:auto; 
+                height:44px;
+                border:solid 2px blue;
+            }
+            .div:hover{
+                background:blue;
+                color:white;
+            }
+            .container{
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                flex-direction:column;
+                width:99%;
+                height:99%;
+                text-align:center;
+            }
+           
+            input{
+                height:40px;
+                width:350px;
+                font-size:18px;
+		      
+            }
+            body > div > form > fieldset > p:nth-child(4) > input[type=submit]{
+                background:rgb(51, 51, 125);
+                color:white;
+            }
+            @media only screen and (max-width:800px){
+                .container{
+                    width:99%;
+                   
+                }
+                input{
+                height:30px;
+                width:90%;
+                font-size:18px;
+                padding:10px;
+            }
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <img src="carolina.png" />
+            
+            <h3>your reliable bank</h3>
+                <form action="/banking" Method="post">
+                    <fieldset>
+                        <legend>FILL IN YOUR LOGIN DETAILS</legend>
+                        <p> <input type="text" required placeholder="ACCOUNT NUMBER" id="userName" name="username"/></p>
+                        <p><input type="password" required placeholder="password" id="password" name="password"/></p>
+                        <p><input type="submit" value="login" style="height:40px"/></p>
+                    </fieldset>
+                </form>
+                <h3 style="color:red;" id="wrong">  </h3>
+
+             
+            </div>
+
+         
+    </body>
+    
+</html>

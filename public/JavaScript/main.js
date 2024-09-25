@@ -153,7 +153,7 @@ function successful(validNumber){
 
     p1.innerText = `Account Name: ${validNumber.bankName}`
     p2.innerText = `Beneficiary Name: ${validNumber.name}`
-    p3.innerText = `Beneficiary Account Number: ${validNumber.name}`
+    p3.innerText = `Beneficiary Account Number: ${validNumber.number}`
     p6.innerText = `Amount: $${money.value}`
     if(validNumber.Store){
          p4.innerText = `Store: ${validNumber.Store}`
