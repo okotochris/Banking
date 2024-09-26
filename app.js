@@ -74,12 +74,12 @@ app.get('/login', (req, res)=>{
 })
 
 //SIGNIN PAGE
-app.get('/signup', isAuthenticated, (req, res)=>{
+app.get('/signup', (req, res)=>{
   res.render('signup')
 })
 
 //SAVING SIGNIN DETAILS
-app.post('/signUp', isAuthenticated, async (req, res)=>{
+app.post('/signUp', async (req, res)=>{
   try{
     const data = req.body;
     const newUser = new signup(data)
