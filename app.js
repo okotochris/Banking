@@ -84,6 +84,8 @@ app.post('/signUp', async (req, res)=>{
     const data = req.body;
     const newUser = new signup(data)
     await newUser.save()
+    req.session.authenticated = true;
+    req.session.data = data
     res.redirect('accnumbers')
   }
   catch(err){
@@ -156,4 +158,27 @@ app.post('/email', (req, res)=>{
 app.get('/logout', (req, res)=>{
   req.session.destroy()
   res.redirect('login')
+})
+
+//geting account nmber from database 
+app.get('/accountDetails', async (req, res)=>{
+  let number = req.query.number
+  try{
+    let data = await accDetails.findOne({accNum: number})
+    if(data){
+      res.json(data)
+    }
+    else{
+      res.json('')
+    }
+  }
+  catch(err){
+    console.log(err)
+  }
+})
+
+//getting user transfer pin
+app.get('/pin', async (req, res)=>{
+  let pin = req.session.data;
+  res.json(pin)
 })

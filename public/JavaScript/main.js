@@ -10,57 +10,17 @@ let history = document.getElementById('history');
 let history_display = document.querySelector('.history');
 let accountInfo = document.querySelector('.accountDetails')
 let value = document.getElementById('balance')
+let loading = document.querySelector('.waiting')
 
 
-
-
-let accountDetails = [
-    {
-        bankName: 'Bank of America',
-        number: '053174103',
-        name: 'Charlotte Moore'
-    },
-    {
-        bankName: 'Aozara Bank',
-        number: '0503728',
-        name: 'Hayamoto Kurihara'
-    },
-    {
-        bankName: 'Bank of North Carolina',
-        number: '053112039',
-        name: 'Lopez Taylor'
-    },
-    {
-        bankName: 'Bank of North Carolina',
-        number: '0531122000',
-        name: 'Martin Harris'
-    },
-    {
-        bankName: 'Sumitomo Mitsui',
-        number: '4253256',
-        name : 'Tomoko Kawahara Smbc',
-        Store: '582'
-    },
-    {
-        bankName: 'Paypay bank account',
-        number: '6671579',
-        name : 'Tomoko Kawahara Smbc',
-        Store: '002'
-    },
-    {
-    bankName: 'CITIZENS BANK NA',
-    number: '001304518',
-    name : 'Mr. Giovanna Harrison',
-    Store: '02916'
-    },
-]
-
-
+// displaying tranfer window
 transfer.onclick= function(){
     details.style.display= "flex";
     conver.style.display= "block";
 
 }
+
+//displalying email window
 let email = document.querySelector('.email')
 let help = document.querySelector('.help')
 help.onclick = ()=>{
@@ -68,73 +28,86 @@ help.onclick = ()=>{
     conver.style.display= "block";
 }
 
-num.onblur = function(){
+//checking if the account number is registered
+num.onblur = async function(){
     accountInfo.replaceChildren()
+    
+    //let validNumber = accountDetails.find(account => account.number == accountN)
     let accountN = num.value;
-    let validNumber = accountDetails.find(account => account.number == accountN)
-
-    if(accountDetails){
+    loading.style.display= 'block'
+    try{
+        let result = await fetch(`/accountDetails?number=${accountN}`)
+        validNumber = await result.json()
+        
+    if(validNumber != ''){
         let h = document.createElement('h3');
         let p1 = document.createElement('p');
         let p2 = document.createElement('p');
             h.innerHTML = 'Account Details'
-            p1.innerText = `Bank Name: ${validNumber.bankName}`
-            p2.innerText = `Account Name ${validNumber.name}`
+            p1.innerText = `Bank Name: ${validNumber.bank}`
+            p2.innerText = `Account Name ${validNumber.accName}`
         accountInfo.appendChild(h)
         accountInfo.appendChild(p1)
         accountInfo.appendChild(p2)
     
     }
-    else if(accountInfo.children.length === 0){
-        let p1 = document.createElement('p');
-        if(num.value== ''){
-            p1.innerText = 'account number can not be empty'
-            accountInfo.appendChild(p1)   
-        }
-       else{
-        p1.innerText = 'unable to retrive account details'
-        accountInfo.appendChild(p1)
-       }
-    }
    
+    loading.style.display= 'none'
+}
+catch(err){
+    console.log(err)
+}
+   window.accDetails =  validNumber
 }
 
-submit.onclick= function(){
-    let accountN = num.value;
-    let validNumber = accountDetails.find(account => account.number == accountN)
-    submit1.innerHTML = ''
+//tranfering money
+submit.onclick= async function(){
    
-  
-    if(validNumber){
+    submit1.innerHTML = ''
+    //getting account details from function that validate account number 
+   let validNumber =  window.accDetails
 
-        if(check.value=="4455"){
-            if(money.value.length < 3){
-                submit1.innerHTML= "Amount too small"
-        
-            }
-            else if(checkBalance()){
-                 submit1.innerText = 'Insuficient Funds'
-            }
-             else{
+    //validating account number
+    try{
+        loading.style.display = 'block'
+        let data = await fetch('/pin')
+        let pin = await data.json()
+
+        if(validNumber){
+       
+
+            if(check.value == pin.password){
+                if(money.value.length < 3){
+                    submit1.innerHTML= "Amount too small"
+            
+                }
+                else if(checkBalance()){
+                    submit1.innerText = 'Insuficient Funds'
+                }
+                else{
+                    
+                    successful(validNumber)
+                    updateHistory()
+                }
                 
-                successful(validNumber)
-                updateHistory()
-             }
-            }
-        else{
-            submit1.innerText = "invalid PIN";
-    }
+                }
+            else{
+                submit1.innerText = "invalid PIN";         
+            }      
     }
     else{
-        if(check.value=="4455"){
+        if(check.value == pin.password){
             submit1.innerHTML= "unable to retrive account name";
         }
         else{
             submit1.innerHTML= "invalid PIN";
         }
     }
-            
-  
+        loading.style.display = 'none'         
+    }
+    catch(err){
+        console.log(err)
+    }
 }
 
 function successful(validNumber){
@@ -151,12 +124,12 @@ function successful(validNumber){
     let dashBoard = document.createElement('button')
     let img = document.createElement('img')
 
-    p1.innerText = `Account Name: ${validNumber.bankName}`
-    p2.innerText = `Beneficiary Name: ${validNumber.name}`
-    p3.innerText = `Beneficiary Account Number: ${validNumber.number}`
+    p1.innerText = `Account Name: ${validNumber.bank}`
+    p2.innerText = `Beneficiary Name: ${validNumber.accName}`
+    p3.innerText = `Beneficiary Account Number: ${validNumber.accNum}`
     p6.innerText = `Amount: $${money.value}`
-    if(validNumber.Store){
-         p4.innerText = `Store: ${validNumber.Store}`
+    if(validNumber.store){
+         p4.innerText = `Store: ${validNumber.store}`
     }
     img.src = 'carolina.png'
     img.style.height = '100px'
@@ -214,6 +187,7 @@ let cancel = function(){
     money.value= "";
     accountInfo.replaceChildren()
     email.style.display = "none"
+    loading.style.display = 'none' 
 }
 
 function debit(){
@@ -236,10 +210,10 @@ function updateHistory(){
     let h5 = document.createElement('h5')
     let p = document.createElement('p')
     let span = document.createElement('span')
-    let accountN = num.value;
-    let validNumber = accountDetails.find(account => account.number == accountN)
+   
+    let validNumber = window.accDetails
 
-    h3.innerText = `${validNumber.name} ${validNumber.number}`
+    h3.innerText = `${validNumber.accName} ${validNumber.accNum}`
     p.innerText = `Trnasfer: $${money.value}`
     h5.innerText = 'Transaction Status: Successful'
     span.innerText = ` ${timeOnly}`

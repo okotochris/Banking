@@ -278,3 +278,24 @@ button:hover{
 }
    
 }
+.waiting{
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+    display:none;
+    border: 6px dotted transparent;
+    border-top-color: red;
+    animation: spin 1s linear infinite;
+    }
+    @keyframes spin{
+       from{
+            transform: rotate(0deg)
+       }
+       to{
+            transform: rotate(360deg)
+       }
+    }
