@@ -15,10 +15,10 @@
     flex-direction:column;
     width:99%;
     height:99%;
-    text-align:center;
+
 }
 
-input{
+p input{
     height:40px;
     width:350px;
     font-size:18px;  
@@ -32,7 +32,7 @@ body > div > form > fieldset > p:nth-child(4) > input[type=submit]{
         width:99%;
        
     }
-    input{
+    p input{
     height:30px;
     width:90%;
     font-size:18px;

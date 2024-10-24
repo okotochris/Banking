@@ -110,6 +110,7 @@ submit.onclick= async function(){
     }
 }
 
+//
 function successful(validNumber){
     conver.style.display= "none";
     let div = document.createElement('div')
@@ -168,15 +169,18 @@ function successful(validNumber){
     debit()
 }
 
+//alet not available 
 function notAvailable(){
     alert("Not avialble download the app")
 }
 
+//history 
 history.onclick = function(){
         conver.style.display= "block";
         history_display.style.display = "block"
 }
 
+//cancel 
 let cancel = function(){
     details.style.display= "none";
     history_display.style.display = "none";
@@ -190,6 +194,7 @@ let cancel = function(){
     loading.style.display = 'none' 
 }
 
+//debit
 function debit(){
     let value = document.getElementById('balance')
     let balance = value.innerText;
@@ -197,8 +202,10 @@ function debit(){
     moneyValue = money.value.replace(/,/g, '')
    let = newAmount = result - moneyValue
    value.innerHTML = newAmount
- 
+
 }
+
+//history 
 function updateHistory(){
     let today = new Date();
     let dateOnly = today.toLocaleDateString();
@@ -225,6 +232,7 @@ function updateHistory(){
     update.insertBefore(div, update.firstChild)    
 }
 
+//check balance 
 function checkBalance(){
     let value = document.getElementById('balance')
     let balance = value.innerText;
@@ -239,6 +247,7 @@ function checkBalance(){
     }
 }
 
+//download 
 async function download(resultContainer, dashBoard, button) {
    
     dashBoard.style.display = 'none'
