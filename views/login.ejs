@@ -17,7 +17,8 @@
                     <fieldset>
                         <legend>FILL IN YOUR LOGIN DETAILS</legend>
                         <p> <input type="text" required placeholder="ACCOUNT NUMBER" id="userName" name="username"/></p>
-                        <p><input type="password" required placeholder="password" id="password" name="password"/></p>
+                        <p><input type="password" required placeholder="password" id="password" name="password" id="password"/></p>
+                        <input type='checkbox' id="check" /><label for="check">Show Password</label>
                         <p><input type="submit" value="login" style="height:40px"/></p>
                     </fieldset>
                 </form>
@@ -25,6 +26,18 @@
 
              
             </div>
+
+            <script>
+                let check = document.getElementById('check')
+                check.onchange = ()=>{
+                    if(check.checked){
+                       document.getElementById('password').type = 'text'
+                    }
+                    else{
+                        document.getElementById('password').type = 'password'
+                    }
+                }
+            </script>
 
     </body>
     
