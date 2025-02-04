@@ -93,7 +93,7 @@ app.get("/signup", isAuthenticated, (req, res) => {
 app.post("/signUp", upload.single("picture"), async (req, res) => {
   try {
     const data = req.body;
-    data.picture = req.file;
+    data.picture = req.file.filename;
     const newUser = new signup(data);
     await newUser.save();
     req.session.authenticated = true;
