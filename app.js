@@ -14,6 +14,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.static("uploads"));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
 
 // configuring multer
 const storage = multer.diskStorage({
@@ -98,8 +99,8 @@ app.post("/signUp", upload.single("picture"), async (req, res) => {
     await newUser.save();
     req.session.authenticated = true;
     req.session.data = data;
-    req.session = data.email;
-    res.redirect("accnumbers");
+    req.session.email = data.email;
+    res.redirect("/accnumbers");
   } catch (err) {
     console.log(err);
   }
@@ -184,9 +185,28 @@ app.get("/accountDetails", async (req, res) => {
     console.log(err);
   }
 });
-
+app.get('/password-reset', (req, res)=>{
+  res.render('password-reset')
+})
 //getting user transfer pin
 app.get("/pin", async (req, res) => {
   let pin = req.session.data;
   res.json(pin);
 });
+
+app.patch('/reset-passwowrd', async (req, res)=>{
+  let oldPassword = req.body.old;
+  let newPassword = req.body.newP;
+  try{
+    let data = await signup.findOneAndUpdate({password: oldPassword}, {password: newPassword}, {new: true})
+    if(data){
+      res.status(200).json('Password Updated')
+    }
+    else{
+      res.status(404).json('Wrong Old Password')
+    }
+  }
+  catch(err){
+    res.status(500).json('Internal Server Error')
+  }
+})
