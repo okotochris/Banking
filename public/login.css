@@ -18,7 +18,7 @@
 
 }
 
-p input{
+p input, button{
     height:40px;
     width:350px;
     font-size:18px;  
@@ -27,16 +27,30 @@ body > div > form > fieldset > p:nth-child(4) > input[type=submit]{
     background:rgb(51, 51, 125);
     color:white;
 }
+button{
+    width: 360px;
+    background:blue;
+    border:none;
+    color:white
+}
 @media only screen and (max-width:800px){
     .container{
         width:99%;
        
     }
     p input{
-    height:30px;
+    height:20px;
     width:90%;
     font-size:18px;
     padding:10px;
+}
+button{
+    width:100%;
+    height:40px;
+    background:blue;
+    color:white;
+    font-size:20px;
+    border:none;
 }
 
 }

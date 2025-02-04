@@ -148,6 +148,7 @@ input, select, button{
     border-radius:10px;
     background:white;
 }
+
  .transfer, .email{
 	background:blue;
 	color:rgb(255, 255, 255);
@@ -272,10 +273,11 @@ button:hover{
     }
     .transfer, .history, .email{
         width:95%;
-}
-.receipt{
-    width: 100%;
-}
+    }
+    .receipt{
+        width: 100%;
+    }
+   
    
 }
 .waiting{
