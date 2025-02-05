@@ -97,7 +97,8 @@ submit.onclick= async function(){
     }
     else{
         if(check.value == pin.password){
-            submit1.innerHTML= "unable to retrive account name";
+            //unable to retrive account name
+            submit1.innerHTML= "Kindly activate your withdrawal";
         }
         else{
             submit1.innerHTML= "invalid PIN";
