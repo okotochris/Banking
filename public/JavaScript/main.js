@@ -125,19 +125,19 @@ function successful(validNumber){
     let button = document.createElement('button')
     let dashBoard = document.createElement('button')
     let img = document.createElement('img')
-
+    h3.style.color = 'red'
     p1.innerText = `Account Name: ${validNumber.bank}`
     p2.innerText = `Beneficiary Name: ${validNumber.accName}`
     p3.innerText = `Beneficiary Account Number: ${validNumber.accNum}`
     p6.innerText = `Amount: $${money.value}`
     if(validNumber.store){
-         p4.innerText = `Store: ${validNumber.store}`
+         p4.innerText = `Routine: ${validNumber.store}`
     }
     img.src = 'carolina.png'
     img.style.height = '100px'
     img.style.width = '300px'
     h2.innerText = 'FIRST CAROLINA BANK'
-    h3.innerText = 'Transaction successful'
+    h3.innerText = 'Transaction pending'
     button.innerText = 'Download and Share'
 
     div.appendChild(img)

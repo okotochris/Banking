@@ -77,7 +77,7 @@ function isAuthenticated(req, res, next) {
 //HOME PAGE
 app.get("/", isAuthenticated, (req, res) => {
   const data = req.session.data;
-  res.render("index", { data });
+  res.render("index", { data });  
 });
 
 //LOGIN PAGE
